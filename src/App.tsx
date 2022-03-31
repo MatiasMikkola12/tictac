@@ -4,16 +4,17 @@ import Finished from "./pages/Finished";
 import useTickTackToe from "./hooks/useTicTacToe";
 const App = () => {
   const game = useTickTackToe();
-  return (
-    <div className="App">
-      {game.status === "created" && <Start handleStart={game.handleStart} />}
-      {game.status === "finished" && (
-        <Finished name={game.winner} handleRestart={game.handleRestart} />
-      )}
-      {game.status === "started" && (
-        <Game board={game.board} handleClick={game.handleClick} />
-      )}
-    </div>
-  );
+
+  const displayGameState = () => {
+    if (game.status === "created") {
+      return <Start handleStart={game.handleStart} />;
+    } else if (game.status === "finished") {
+      return <Finished name={game.winner} handleRestart={game.handleRestart} />;
+    } else {
+      return <Game board={game.board} handleClick={game.handleClick} />;
+    }
+  };
+
+  return <div className="App">{displayGameState()}</div>;
 };
 export default App;
