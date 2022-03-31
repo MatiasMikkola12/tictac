@@ -28,10 +28,10 @@ const Start = (props: Props) => {
   
   return (
     <div>
-      <h1>React Tic Tac Toe</h1>
+      <h1>Tic Tac Toe</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="player1">Player 1</label>
+          <label htmlFor="player1">Player 1 name: </label>
           <input
             type="text"
             value={players[0]}
@@ -39,7 +39,7 @@ const Start = (props: Props) => {
           />
         </div>
         <div>
-          <label htmlFor="player2">Player 2</label>
+          <label htmlFor="player2">Player 2 name: </label>
           <input
             type="text"
             value={players[1]}
