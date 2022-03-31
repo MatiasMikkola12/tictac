@@ -1,24 +1,31 @@
 import { useState, useMemo, FormEvent } from "react";
+
 interface Props {
   handleStart(players: string[]): void;
 }
+
 const Start = (props: Props) => {
+
   const { handleStart } = props;
   const [players, setPlayers] = useState(["", ""]);
+
   const handleInput = (event: FormEvent<HTMLInputElement>, index: number) => {
     const newPlayers = [...players];
     newPlayers.splice(index, 1, event.currentTarget.value);
     setPlayers(newPlayers);
   };
+
   const canStart = useMemo(
     () => players.every((player) => player && player.length > 0),
     [players]
   );
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!canStart) return;
     handleStart(players);
   };
+  
   return (
     <div>
       <h1>React Tic Tac Toe</h1>
