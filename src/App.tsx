@@ -8,7 +8,7 @@ const App = () => {
     <div className="App">
       {game.status === "created" && <Start handleStart={game.handleStart} />}
       {game.status === "finished" && (
-        <Finished name={game.winner} restart={game.handleRestart} />
+        <Finished name={game.winner} handleRestart={game.handleRestart} />
       )}
       {game.status === "started" && (
         <Game board={game.board} handleClick={game.handleClick} />
